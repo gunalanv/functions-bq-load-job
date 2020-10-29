@@ -14,12 +14,14 @@ const bigquery = new BigQuery();
  * @param {object} context The event metadata.
  */
 exports.loadFile = (data, context) => {
-    const datasetId = 'finance';
-    const tableId = 'transactions';
+    const datasetId = 'first_party_data';
+    const tableId = 's3_load';
 
     const jobMetadata = {
         skipLeadingRows: 1,
-        writeDisposition: 'WRITE_APPEND'
+        sourceFormat: 'CSV',
+        autodetect: true,
+        writeDisposition: 'WRITE_APPEND',
     };
 
     // Loads data from a Google Cloud Storage file into the table
