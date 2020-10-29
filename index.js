@@ -21,7 +21,7 @@ exports.loadFile = (data, context) => {
         skipLeadingRows: 1,
         sourceFormat: 'CSV',
         autodetect: true,
-        writeDisposition: 'WRITE_APPEND',
+        writeDisposition: 'WRITE_TRUNCATE',
     };
 
     // Loads data from a Google Cloud Storage file into the table
