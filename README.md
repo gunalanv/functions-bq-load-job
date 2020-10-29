@@ -23,7 +23,7 @@ Functions for your project.
 
 1. Deploy the "loadFile" function with an HTTP trigger:
 
-        gcloud functions deploy loadFile --runtime nodejs8 --trigger-resource gs://BUCKET_NAME --trigger-event google.storage.object.finalize
+        gcloud functions deploy loadFile --runtime nodejs10 --trigger-resource gs://BUCKET_NAME --trigger-event google.storage.object.finalize
 
 1. Create a BigQuery dataset and a table with the following schema:
 
@@ -38,5 +38,3 @@ Functions for your project.
     * Replace `YOUR_BUCKET_NAME` with the name of your Cloud Storage Bucket.
 
 1. Query the BigQuery table to check that you can see that the data has been inserted successfully.
-
-[Cloud Functions quickstart guide]: https://cloud.google.com/functions/docs/quickstart-console
