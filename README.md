@@ -29,10 +29,6 @@ Functions for your project.
 
 1. Update the variables datasetId and tableId in index.js to reflect the dataset and table you created in the previous step.
 
-1. Upload 'sample.csv', located in the root of this repo, to your bucket:
-
-        gsutil cp sample.csv gs://BUCKET_NAME
-
-    * Replace `YOUR_BUCKET_NAME` with the name of your Cloud Storage Bucket.
+1. Upload a CSV file to this bucket and the Function should execute.
 
 1. Query the BigQuery table to check that you can see that the data has been inserted successfully.
