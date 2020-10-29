@@ -25,9 +25,7 @@ Functions for your project.
 
         gcloud functions deploy loadFile --runtime nodejs10 --trigger-resource gs://BUCKET_NAME --trigger-event google.storage.object.finalize
 
-1. Create a BigQuery dataset and a table with the following schema:
-
-        user_id:STRING,amount:FLOAT
+1. Create a BigQuery dataset. The table will be auto-created and records will be appended to this table.
 
 1. Update the variables datasetId and tableId in index.js to reflect the dataset and table you created in the previous step.
 
