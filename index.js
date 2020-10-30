@@ -23,10 +23,8 @@ exports.loadFile = (data, context) => {
         console.log('****************************************');
         console.log('  Event: ${context.eventId}');
         console.log('  Event Type: ${context.eventType}');
-        console.log('  Bucket: ${file.bucket}');
-        console.log('  File: ${file.name}');
-        console.log('  Created: ${file.timeCreated}');
-        console.log('  Updated: ${file.updated}');
+        console.log('  Bucket: ${data.bucket}');
+        console.log('  File: ${data.name}');
         console.log('****************************************');    
         
         const datasetId = 'first_party_data';
