@@ -20,13 +20,6 @@ exports.loadFile = (data, context) => {
     
     if (parts[parts.length - 1] == "csv") {
         
-        console.log('****************************************');
-        console.log('  Event: ${context.eventId}');
-        console.log('  Event Type: ${context.eventType}');
-        console.log('  Bucket: ${data.bucket}');
-        console.log('  File: ${data.name}');
-        console.log('****************************************');    
-        
         const datasetId = 'first_party_data';
         const tableId = 's3_load';
         
