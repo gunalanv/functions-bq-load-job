@@ -14,24 +14,40 @@ const bigquery = new BigQuery();
  * @param {object} context The event metadata.
  */
 exports.loadFile = (data, context) => {
-    const datasetId = 'first_party_data';
-    const tableId = 's3_load';
 
-    const jobMetadata = {
-        skipLeadingRows: 1,
-        sourceFormat: 'CSV',
-        autodetect: true,
-        writeDisposition: 'WRITE_TRUNCATE',
-    };
+    var filename = data.name;
+    var parts = filename.split('.');
+    
+    if (parts[parts.length - 1] == "csv") {
+        
+        console.log('****************************************');
+        console.log('  Event: ${context.eventId}');
+        console.log('  Event Type: ${context.eventType}');
+        console.log('  Bucket: ${file.bucket}');
+        console.log('  File: ${file.name}');
+        console.log('  Created: ${file.timeCreated}');
+        console.log('  Updated: ${file.updated}');
+        console.log('****************************************');    
+        
+        const datasetId = 'first_party_data';
+        const tableId = 's3_load';
+        
+        const jobMetadata = {
+            skipLeadingRows: 1,
+            sourceFormat: 'CSV',
+            autodetect: true,
+            writeDisposition: 'WRITE_TRUNCATE',
+        };
 
-    // Loads data from a Google Cloud Storage file into the table
-    bigquery
-        .dataset(datasetId)
-        .table(tableId)
-        .load(storage.bucket(data.bucket).file(data.name), jobMetadata)
-        .catch(err => {
-            console.error('ERROR:', err);
-        });
+        // Loads data from a Google Cloud Storage file into the table
+        bigquery
+            .dataset(datasetId)
+            .table(tableId)
+            .load(storage.bucket(data.bucket).file(data.name), jobMetadata)
+            .catch(err => {
+                console.error('ERROR:', err);
+            });
 
-    console.log(`Loading from gs://${data.bucket}/${data.name} into ${datasetId}.${tableId}`);
+        console.log(`Loading from gs://${data.bucket}/${data.name} into ${datasetId}.${tableId}`);       
+    }
 };
